@@ -6,7 +6,7 @@ methods = ['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR',
 
 def get_next_template_match(in_img, template, original=None):
     w, h = template.shape[::-1]
-    if original == None:
+    if original is None:
         original = in_img
 
     for meth in methods:

@@ -1,11 +1,9 @@
 import cv2
+import framework
 import numpy as np
 import template_matching
 
 if __name__ == '__main__':
-    # Get camera
-    cap = cv2.VideoCapture(0)
-
     template = cv2.imread('images/microsoft_pen.png', 0)
 
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
@@ -14,8 +12,7 @@ if __name__ == '__main__':
     # List wanted methods
     while (1):
 
-        _, img = cap.read()  # Read frame,
-        img = cv2.flip(img, 1)  # flip along y axis
+        img = framework.get_frame()
         original = img
 
         img = fgbg.apply(img)
@@ -39,7 +36,5 @@ if __name__ == '__main__':
         for name, matched in template_matching.get_next_template_match(img, template, original):
             cv2.imshow(name, matched)
 
-        # Wait on Esc to close
-        k = cv2.waitKey(5) & 0xFF
-        if k == 27:
+        if framework.is_esc():
             break
