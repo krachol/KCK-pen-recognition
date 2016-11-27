@@ -13,7 +13,6 @@ def main():
         # define range of blue color in HSV
         lower_blue = np.array([104, 50, 50])
         upper_blue = np.array([150, 255, 255])
-
         lower_green = (29, 86, 6)
         upper_green = (64, 255, 255)
 
